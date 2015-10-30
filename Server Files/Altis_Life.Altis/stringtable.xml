@@ -5133,6 +5133,10 @@
 		<Key ID="STR_SMARTPHONE_NOTRUF">
 			<Original>Notruf</Original>
 			<French>Appel d'urgence</French>
+		</Key>		
+		<Key ID="STR_SMARTPHONE_DELETE">
+			<Original>Delete Messages</Original>
+			<French>Supprimer les messages</French>
 		</Key>
 		<Key ID="STR_SMARTPHONE_Absenden">
 			<Original>Absenden</Original>
