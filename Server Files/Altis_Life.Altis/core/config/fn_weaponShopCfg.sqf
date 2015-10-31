@@ -20,11 +20,61 @@ if(_shop == "") exitWith {closeDialog 0}; //Bad shop type passed.
 
 switch(_shop) do
 {
+	case "adac_basic":
+	{
+		switch (true) do 
+		{
+			case (playerSide != independent): {"Du bist kein ADAC"};
+			case (__GETC__(life_mediclevel) < 2): {"Du kannst erst als ADAC hier Zugreifen !"}; 
+			default {
+				["ADAC Shop",
+					[
+						["ItemGPS",nil,10],
+						["Binocular",nil,10],
+						["ToolKit",nil,10],
+						["FirstAidKit",nil,10],
+						["Medikit",nil,10],
+						["NVGoggles",nil,10],
+						["Chemlight_red",nil,20],
+						["Chemlight_yellow",nil,20],
+						["Chemlight_green",nil,20],
+						["Chemlight_blue",nil,20]
+					]
+				];
+			};
+		};
+	};
+	
+	case "med_basic":
+	{
+		switch (true) do 
+		{
+			case (playerSide != independent): {"Vous n'êtes pas médecin"};
+			case (__GETC__(life_mediclevel) < 1): {"Vous n'êtes pas médecin"}; 
+			default {
+				["Hospital EMS Shop",
+					[
+						["ItemGPS",nil,10],
+						["Binocular",nil,10],
+						["ToolKit",nil,10],
+						["FirstAidKit",nil,10],
+						["Medikit",nil,10],
+						["NVGoggles",nil,10],
+						["Chemlight_red",nil,20],
+						["Chemlight_yellow",nil,20],
+						["Chemlight_green",nil,20],
+						["Chemlight_blue",nil,20]
+					]
+				];
+			};
+		};
+	};
+
 	case "cop_basic":
 	{
 		switch(true) do
 		{
-			case (playerSide !=west): {"Du bist kein Polizist"};
+			case (playerSide != west): {"Vous ne faites pas partie des forces de l'ordre"};
 			default
 			{
 				["Praktikanten Polizei Shop",
@@ -40,8 +90,8 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide != west): {"You are not a cop!"};
-			case (__GETC__(life_coplevel) < 1): {"Du kannst erst als Polizist hier Zugreifen !"};
+			case (playerSide != west): {"Vous ne faites pas partie des forces de l'ordre"};
+			case (__GETC__(life_coplevel) < 1): {"Vous ne faites pas partie des forces de l'ordre"};
 			default
 			{
 				["Altis Visiere & Sonstiges",
@@ -77,62 +127,12 @@ switch(_shop) do
 		};
 	};
 	
-	case "adac_basic":
-	{
-		switch (true) do 
-		{
-			case (playerSide != independent): {"Du bist kein ADAC"};
-			case (__GETC__(life_mediclevel) < 2): {"Du kannst erst als ADAC hier Zugreifen !"}; 
-			default {
-				["ADAC Shop",
-					[
-						["ItemGPS",nil,10],
-						["Binocular",nil,10],
-						["ToolKit",nil,10],
-						["FirstAidKit",nil,10],
-						["Medikit",nil,10],
-						["NVGoggles",nil,10],
-						["Chemlight_red",nil,20],
-						["Chemlight_yellow",nil,20],
-						["Chemlight_green",nil,20],
-						["Chemlight_blue",nil,20]
-					]
-				];
-			};
-		};
-	};
-	
-	case "med_basic":
-	{
-		switch (true) do 
-		{
-			case (playerSide != independent): {"Du bist kein MEDIC"};
-			case (__GETC__(life_mediclevel) < 1): {"Du kannst erst als MEDIC hier Zugreifen !"}; 
-			default {
-				["Hospital EMS Shop",
-					[
-						["ItemGPS",nil,10],
-						["Binocular",nil,10],
-						["ToolKit",nil,10],
-						["FirstAidKit",nil,10],
-						["Medikit",nil,10],
-						["NVGoggles",nil,10],
-						["Chemlight_red",nil,20],
-						["Chemlight_yellow",nil,20],
-						["Chemlight_green",nil,20],
-						["Chemlight_blue",nil,20]
-					]
-				];
-			};
-		};
-	};
-	
 	case "cop_patrol":
 	{
 		switch(true) do
 		{
-			case (playerSide !=west): {"Du bist kein Polizist"};
-			case (__GETC__(life_coplevel) < 2): {"Du bist noch kein Komissar !"};
+			case (playerSide !=west): {"Vous ne faites pas partie des forces de l'ordre"};
+			case (__GETC__(life_coplevel) < 2): {"Vous n'êtes pas officier de police."};
 			default
 			{
 				["Beamter Waffen Laden",
@@ -152,8 +152,8 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide !=west): {"Du bist kein Polizist"};
-			case (__GETC__(life_coplevel) < 3): {"Du bist noch kein Kommissar"};
+			case (playerSide !=west): {"Vous ne faites pas partie des forces de l'ordre"};
+			case (__GETC__(life_coplevel) < 3): {"Vous n'êtes pas sergent de police."};
 			default
 			{
 				["Kommisar Waffen Shop",
@@ -175,8 +175,8 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide !=west): {"Du bist kein Polizist"};
-			case (__GETC__(life_coplevel) < 4): {"Du bist kein HauptKommissar"};
+			case (playerSide !=west): {"Vous ne faites pas partie des forces de l'ordre"};
+			case (__GETC__(life_coplevel) < 4): {"Vous n'êtes pas officier de police."};
 			default
 			{
 				["HauptKommisar Waffen Shop",
@@ -199,11 +199,11 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide !=west): {"Du bist kein Polizist"};
-			case (__GETC__(life_coplevel) < 5): {"Du bist kein SEK-Beamter"};
+			case (playerSide !=west): {"Vous ne faites pas partie des forces de l'ordre"};
+			case (__GETC__(life_coplevel) < 5): {"Vous n'êtes pas chef de police."};
 			default
 			{
-				["SEK Waffen Shop",
+				["Altis SEK Shop",
 					[
 						["arifle_MXM_Black_F",nil,10],
 						["arifle_MX_Black_F",nil,10],
@@ -226,8 +226,8 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide !=west): {"Du bist kein Polizist"};
-			case (__GETC__(life_coplevel) < 6): {"Du bist nicht bei der GSG9"};
+			case (playerSide !=west): {"Vous ne faites pas partie des forces de l'ordre"};
+			case (__GETC__(life_coplevel) < 6): {"Vous ne faites pas partie du GIPN."};
 			default
 			{
 				["GSG9 Waffen Shop",
@@ -257,7 +257,7 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide != civilian): {"You are not a civilian!"};
+			case (playerSide != civilian): {"Vous n'êtes pas un civil"};
 			case (!license_civ_rebel): {"Du besitz keine Rebellen Lizenz!"};
 			default
 			{
@@ -300,8 +300,8 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (playerSide != civilian): {"You are not a civilian!"};
-			case (!license_civ_gun): {"Du hast keinen Waffenschein!"};
+			case (playerSide != civilian): {"Vous n'êtes pas un civil"};
+			case (!license_civ_gun): {"Vous avez pas de permis de port d'arme"};
 			default
 			{
 				["Billy Joe's Firearms",
@@ -325,7 +325,7 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (__GETC__(life_donator) == 0): {"You are not a donator!"};
+			case (__GETC__(life_donator) == 0): {"Vous n'êtes pas donateur"};
 			case (__GETC__(life_donator) == 1):
 			{
 				["STS Donator Shop Rang 1",
